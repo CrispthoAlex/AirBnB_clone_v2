@@ -142,4 +142,5 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 <br>
 
 ## Contact me
+![](https://twitter.com/CrispthoAlex/photo)
 #### * [Crispthofer Rincon](https://twitter.com/CrispthoAlex)
