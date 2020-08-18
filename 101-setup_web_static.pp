@@ -10,18 +10,14 @@ package { 'nginx':
 ensure => installed,
 }
 
-$d1 = 'data'
-$d2 = 'web_static'
-$d3 = 'releases'
-$d3_1 = 'test'
-$d4 = 'shared'
-file {[/$d1/, /$d1/$d2, /$d1/$d2/$d3, /$d1/$d2/$d3/$d3_1, /$d1/$d2/$d4]:
+file {['/data/', '/data/web_static', '/data/web_static2/releases',
+      '/data/web_static/releases/test', '/data/web_static/shared']:
 ensure => 'directory',
 owner  => 'ubuntu',
 group  => 'ubuntu',
 }
 
-file { /$d1/$d2/$d3/$d3_1/index.html:
+file { '/data/web_static/releases/test/index.html':
 content => "<html>
   <head>
   </head>
@@ -33,9 +29,9 @@ owner   => 'ubuntu',
 group   => 'ubuntu',
 }
 
-file { /$d1/$d2/'current':
+file { '/data/web_static/current':
 ensure => 'link',
-target => /$d1/$d2/$d3/$d3_1/,
+target => '/data/web_static/releases/test/',
 force  => yes,
 owner  => 'ubuntu',
 group  => 'ubuntu',
@@ -43,12 +39,11 @@ group  => 'ubuntu',
 
 exec { 'sed':
 command => 'sudo sed -i "/listen 80 default_server/a location /hbnb_static/ {\
-\talias /data/web_static/current/;\
-}" /etc/nginx/sites-available/default',
+\talias /data/web_static/current/;}" /etc/nginx/sites-available/default',
 require => Package['nginx'],
 }
 
 service { 'nginx':
-ensure => running,
-require Package['nginx'],
+ensure  => running,
+require => Package['nginx'],
 }
