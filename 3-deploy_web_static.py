@@ -64,10 +64,10 @@ def do_deploy(archive_path):
 
 
 def deploy():
-    """  This script creates and distributes an archive to your web servers """
+    """  """
     file_path = do_pack()
 
-    if file_path is None:
+    if file_path:
+        return do_deploy(file_path)
+    else:
         return False
-
-    return do_deploy(file_path)
