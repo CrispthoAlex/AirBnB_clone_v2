@@ -20,11 +20,11 @@ def do_pack():
     fi_name = "{}_{}.tgz".format(di_src, date_file)  # file name to create
 
     local("mkdir -pv {}".format(di_crea))
-    succeess = local("tar -cvzf {}/{} {}".format(
+    succeess = local("tar -cvzf {}/{} {}/".format(
         di_crea, fi_name, di_src))
 
-    if succeess:
-        return fi_name
+    if succeess.succeeded:
+        return "{}/{}".format(di_crea, fi_name)
     else:
         return None
 
@@ -49,7 +49,7 @@ def do_deploy(archive_path):
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/".format(
             fi_name_tgz, fi_name))
         run("rm /tmp/{}".format(fi_name_tgz))
-        run("mv /data/web_static/releases/{0}/web_static/* \
+        run("mv -n /data/web_static/releases/{0}/web_static/* \
         /data/web_static/releases/{0}/".format(fi_name))
         run("rm -rf /data/web_static/releases/{}/web_static".format(fi_name))
         run("rm -rf /data/web_static/current")
