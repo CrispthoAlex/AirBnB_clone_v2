@@ -70,4 +70,4 @@ def deploy():
     if file_path is None:
         return False
 
-    return do_deploy(archive_path)
+    return do_deploy(file_path)
