@@ -32,17 +32,17 @@ def do_pack():
 def do_deploy(archive_path):
     """ script that distributes an archive to your web servers """
     if isfile(archive_path) is False:
-        print(archive_path)
+        # print(archive_path)
         return False
     # Gets file name
     fi_name_tgz = archive_path.split("/")[1]  # file_name.tgz
-    print(fi_name_tgz)
+    # print(fi_name_tgz)
     fi_name = fi_name_tgz.split(".")[0]  # file_name without .tgz
-    print(fi_name)
+    # print(fi_name)
 
     try:
 
-        print("Ok try")
+        # print("Ok try")
         put("{}".format(archive_path), "/tmp/")
         run("mkdir -p /data/web_static/releases/{}".format(
             fi_name))
@@ -59,7 +59,7 @@ def do_deploy(archive_path):
         return True
 
     except Exception:
-        print("Ok Exception")
+        # print("Ok Exception")
         return False
 
 
