@@ -8,8 +8,8 @@ import os
 
 
 env.hosts = [
-    34.73.138.116,
-    54.145.53.228,
+    "34.73.138.116",
+    "54.145.53.228"
 ]
 # Set the username
 env.user = "ubuntu"
@@ -17,14 +17,14 @@ env.user = "ubuntu"
 
 def do_deploy(archive_path):
     """ script that distributes an archive to your web servers """
-    if !os.path(archive_path):
+    if os.path.exists(archive_path) is False:
         return False
     # Gets file name
     fi_name_tgz = archive_path.split("/")[1]  # file_name.tgz
     fi_name = fi_name_tgz.split(".")[0]  # file_name without .tgz
 
     try:
-        put(archive_path, "/tmp/")
+        put("{}".format(archive_path), "/tmp/")
         run("sudo mkdir -p /data/web_static/releases/{}".format(
             fi_name))
         run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/".format(
