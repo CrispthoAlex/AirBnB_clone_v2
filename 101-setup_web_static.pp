@@ -10,18 +10,18 @@ package { 'nginx':
 ensure => installed,
 }
 
-d1 = 'data'
-d2 = 'web_static'
-d3 = 'releases'
-d3_1 = 'test'
-d4 = 'shared'
-file {['/d1/d2/d3', '/d1/d2/d3/d3_1', '/d1/d2/d4']:
+$d1 = 'data'
+$d2 = 'web_static'
+$d3 = 'releases'
+$d3_1 = 'test'
+$d4 = 'shared'
+file {['/$d1/$d2/$d3', '/$d1/$d2/$d3/$d3_1', '/$d1/$d2/$d4']:
 ensure => 'directory',
 owner  => 'ubuntu',
 group  => 'ubuntu',
 }
 
-file { '/d1/d2/d3/d3_1/index.html':
+file { '/$d1/$d2/$d3/$d3_1/index.html':
 content => "<html>
   <head>
   </head>
@@ -33,9 +33,9 @@ owner   => 'ubuntu',
 group   => 'ubuntu',
 }
 
-file { '/d1/d2/current':
+file { '/$d1/$d2/current':
 ensure => 'link',
-target => '/d1/d2/d3/d3_1/',
+target => '/$d1/$d2/$d3/$d3_1/',
 force  => yes,
 owner  => 'ubuntu',
 group  => 'ubuntu',
