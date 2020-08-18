@@ -23,7 +23,7 @@ def do_pack():
     succeess = local("tar -cvzf {}/{} {}".format(
         di_crea, fi_name, di_src))
 
-    if succeess:
+    if succeess.succeeded:
         return fi_name
     else:
         return None
