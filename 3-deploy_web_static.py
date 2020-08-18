@@ -23,10 +23,10 @@ def do_pack():
     succeess = local("tar -cvzf {}/{} {}".format(
         di_crea, fi_name, di_src))
 
-    if succeess == 1:
-        return None
-    else:
+    if succeess:
         return fi_name
+    else:
+        return None
 
 
 def do_deploy(archive_path):
