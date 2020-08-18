@@ -75,23 +75,34 @@ def deploy():
 
 def do_clean(number=0):
     """ This functions deletes out-of-date archives """
-    d_lcl = "versions"  # Local directory
-    d_rmt = "/data/web_static/releases"  # Remote directory
+    d_lcl = "versions/"  # Local directory
+    d_rmt = "/data/web_static/releases/"  # Remote directory
     number = int(number)
     # print(number)
 
     #  Execute remove local
-    if number < 2:
-        local("lastfile=$(ls -t {}/ | tail -n +2)".format(d_lcl))  # Local
-    else:  # number + 1, count later newest second file
-        local("lastfile=$(ls -t {}/ | tail -n +{})".format(d_lcl, number + 1))
-
-    local("for rmfile in $lastfile; do rm -rfv {}/$rmfile; done".format(d_lcl))
+    with lcd(d_lcl):
+        if number < 2:
+            rmlcl = local("ls -t | tail -n +2", capture=True).split()  # Local
+            # print(rmlcl[:])
+        else:  # number + 1, count later newest second file
+            rmlcl = local("ls -t | tail -n +{}".format(number + 1),
+                          capture=True).split()
+            print(rmlcl)
+        for i in rmlcl:
+            if "web_static_" in i:
+                local("rm -rfv ./{}".format(i))
 
     #  Execute remove remote
-    if number < 2:
-        sudo("lastfile=$(ls -t {}/ | tail -n +2)".format(d_rmt))  # remote
-    else:
-        sudo("lastfile=$(ls -t {}/ | tail -n +{})".format(d_rmt, number + 1))
-
-    sudo("for rmfile in $lastfile; do rm -rfv {}/$rmfile; done".format(d_rmt))
+    with cd(d_rmt):
+        if number < 2:
+            in_run = "ls -t | tail -n +2"
+            rmrmt = run(in_run).splitlines()  # remote
+            print(rmrmt)
+        else:
+            in_run = "ls -t | tail -n +{}".format(number + 1)
+            rmrmt = run(in_run).splitlines()
+            print(rmrmt)
+        for i in rmrmt:
+            if "web_static_" in i:
+                run("rm -rfv ./{}".format(i))
