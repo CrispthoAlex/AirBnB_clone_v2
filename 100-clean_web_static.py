@@ -73,10 +73,13 @@ def deploy():
         return False
 
 
-def do_clean(number=0):
+def do_clean( number=0 ):
     """ This functions deletes out-of-date archives """
     d_lcl = "versions"  # Local directory
     d_rmt = "/data/web_static/releases"  # Remote directory
+    number = int(number)
+    # print(number)
+
     if number < 2:
         local("lastfile=$(ls -t {}/ | tail -n +2)".format(d_lcl))  # Local
         run("lastfile=$(ls -t {}/ | tail -n +2)".format(d_rmt))  # remote
