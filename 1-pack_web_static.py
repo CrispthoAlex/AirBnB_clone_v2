@@ -15,10 +15,10 @@ def do_pack():
     fi_name = "{}_{}.tgz".format(di_src, date_file)  # file name to create
 
     local("mkdir -pv {}".format(di_crea))
-    succeess = local("tar -cvzf {}/{} {}".format(
+    succeess = local("tar -cvzf {}/{} {}/".format(
         di_crea, fi_name, di_src))
 
-    if succeess:
-        return fi_name
+    if succeess.succeeded:
+        return "{}/{}".format(di_crea, fi_name)
     else:
         return None
