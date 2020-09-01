@@ -73,7 +73,7 @@ def number_temp(number=None):
 
 
 @app.route('/number_odd_or_even')
-@app.route('/number_odd_or_even/<int:numis>')
+@app.route('/number_odd_or_even/<int:n>')
 def number_is(n=None):
     """
     Starts a Flask web application.
