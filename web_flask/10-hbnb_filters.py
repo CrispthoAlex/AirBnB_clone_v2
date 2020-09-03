@@ -12,15 +12,21 @@ Flask web application
 """
 from models import storage
 from models.state import State
+from models.amenity import Amenity
 from flask import Flask, render_template
 app = Flask(__name__)
 
 
 @app.route('/hbnb_filters', strict_slashes=False)
 def states_cities():
-    """ Display a HTML page with a list of States objects """
+    """
+    Display a HTML page with a list of States objects on
+    0.0.0.0/5000/hbnb_filters
+    """
+    ameni = storage.all(Amenity).values()
     states = storage.all(State).values()
-    return render_template('10-hbnb_filters.html', list_states=states, id_state=id)
+    return render_template('10-hbnb_filters.html',
+                           list_states=states, list_ameni=ameni)
 
 
 @app.route('/cities_by_states', strict_slashes=False)

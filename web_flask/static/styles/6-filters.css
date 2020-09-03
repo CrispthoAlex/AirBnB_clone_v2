@@ -34,8 +34,8 @@
 	background-color: #FAFAFA;
 	width: 100%;
 
-	height: 300px;  /* max height */
-	scrolling: yes; /* allow scroll */
+	max-height: 300px;
+	overflow: auto; /* allow scroll with hidden bar */
 
 	margin-left: -1px;
 	margin-top: 8px;
@@ -53,13 +53,20 @@
 	display: inline-block;
 }
 
-ul {
+.popover ul {
 	list-style-type: none;
 	padding: 0px;
 	padding-bottom: 20px;
 }
 
-li {
+.popover li {
+    list-style-type: none;
+    padding: 0px;
+    margin-left: 50px;
+}
+
+.popover::-webkit-scrollbar {
+    display: none;
 }
 
 h2 {
