@@ -18,7 +18,7 @@
 	<button>Search</button>
 	<div class="locations">
 	  <h3>States</h3>
-	  <h4>&nbsp</h4>
+	  <h4>&nbsp;</h4>
 	  <ul class="popover">
 	    {% for state in list_states|sort(attribute='name') %}
 	    <h2>{{ state.name }}</h2>
@@ -31,7 +31,7 @@
 	</div>
 	<div class="filter_amenities">
 	  <h3>Amenities</h3>
-	  <h4>&nbsp</h4>
+	  <h4>&nbsp;</h4>
 	  <ul class="popover">
 	    {% for amenity in list_ameni|sort(attribute='name') %}
 	    <li>{{ amenity.name }}</li>
