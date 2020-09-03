@@ -1,0 +1,121 @@
+.places {
+    padding: 30px 0 0 30px;
+    width: 100%;
+    box-sizing: border-box;
+/*allows us to include the padding and border
+  in an element's total width and height.*/
+}
+
+div.places-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px; /* allows see all content of Suite article */
+}
+
+.places h1 {
+    top: 0;
+    left: 0;
+    padding:0 0 0 20px;
+    font-size: 30px;
+}
+
+.places article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: normal; /* center - normal*/
+}
+
+.places article div.title {
+    width: 100%;
+    position: relative;
+}
+
+section.places article div.title h2 {
+    padding: 0 0 20px 0;
+    font-size: 30px;
+    text-align: center;
+}
+
+.places article div.title div.price_by_night {
+    font-size: 30px;
+    color: #FF5A5F;
+    text-align: center;
+    top: 0;
+    right: 0;
+    border: 4px #FF5A5F solid;
+    border-radius: 50%;
+    min-width: 60px;
+    height: 60px;
+    position: absolute;
+    /* specifies the height of a line */
+    /* length: A fixed line height in px, pt, cm, etc. */
+    line-height: 60px;
+    /* specifies what should happen if content overflows an element's box. */
+    /* hidden: The overflow is clipped, and the rest of the content will be invisible */
+    overflow: hidden;
+}
+
+.places article div.information {
+    height: 80px;
+    width: 100%;
+    border-top: 1px #DDDDDD solid;
+    border-bottom: 1px #DDDDDD solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.places article div.information div {
+    width: 100px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    position: relative;
+}
+
+.places article div.information div.logo-info {
+    width: 100px;
+    height: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.places article div.information div.max_guest div.logo-info {
+    background-image: url("../images/icon_group.png");
+}
+
+.places article div.information div.number_rooms div.logo-info {
+    background-image: url("../images/icon_bed.png");
+}
+
+.places article div.information div.number_bathrooms div.logo-info {
+    background-image: url("../images/icon_bath.png");
+}
+
+.places article div.information div span {
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+.user {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.places article div.description {
+/* property for description */
+}
