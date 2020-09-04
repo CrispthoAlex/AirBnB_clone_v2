@@ -9,7 +9,7 @@
     /* Z-index will modify the order, being the most visible
        layers for the user those with a higher number, being more
        hidden those with a lower index */
-    position: absolute;
+    position: relative;
     z-index: 2;
 }
 
@@ -68,6 +68,7 @@
     list-style-type: none;
     padding: 5px 0px 0px 0px;
     margin-left: 50px;
+    font-weight: bold;
 }
 
 .popover::-webkit-scrollbar {
