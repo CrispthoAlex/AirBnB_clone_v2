@@ -5,6 +5,12 @@
 	width: 100%;
 	border: 1px solid #DDDDDD;
 	border-radius: 4px;
+
+	/* Z-index will modify the order, being the most visible
+	   layers for the user those with a higher number, being more
+	   hidden those with a lower index */
+	position: absolute;
+	z-index: 2;
 }
 
 .locations {

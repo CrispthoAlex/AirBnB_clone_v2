@@ -1,9 +1,13 @@
 .places {
-    padding: 30px 0 0 30px;
+    padding: 70px 0 0 30px;
     width: 100%;
     box-sizing: border-box;
-/*allows us to include the padding and border
-  in an element's total width and height.*/
+    /*allows us to include the padding and border
+      in an element's total width and height.*/
+    /*Z-index will modify the order, being the most visible
+    layers for the user those with a higher number, being more
+    hidden those with a lower index */
+    z-index: 1;
 }
 
 div.places-container {
